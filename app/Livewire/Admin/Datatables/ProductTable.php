@@ -57,6 +57,7 @@ class ProductTable extends DataTableComponent
                         'product' => $row,
                     ]);
                 }),
+            Column::make('responsable', 'responsable')->searchable()->sortable(),
             Column::make('Acciones')->label(function ($row) {
                 return view('admin.products.actions', ['product' => $row]);
             })
