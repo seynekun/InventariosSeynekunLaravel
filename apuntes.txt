@@ -1,0 +1,19 @@
+--Componente con clase
+php artisan make:component AdminLayout
+
+
+--Crear archivo seeder
+php artisan make:seeder CategorySeeder
+
+--seeder
+php artisan make:seeder CategorySeeder
+
+ php artisan migrate:fresh --seed
+
+
+--datatables
+php artisan make:datatable Admin/Datatables/CategoryTable C
+ategory
+
+
+--continuar minuto 26 - Video 2 ordenes de compra
