@@ -15,8 +15,8 @@
                         </svg>
                     </button>
                     <a href="/" class="flex ms-2 md:me-24">
-                        <img src="{{ asset('img/logo.jpg') }}" class="h-12 rounded-full me-3" alt="FlowBite Logo" />
-                        <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap">DNATA</span>
+                        <img src="{{ asset('img/logo.png') }}" class="h-12 rounded-full me-3" alt="FlowBite Logo" />
+                        <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap">SEYNEKUN</span>
                     </a>
                 </div>
                 <div class="flex items-center">
