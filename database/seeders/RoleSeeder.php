@@ -122,7 +122,7 @@ class RoleSeeder extends Seeder
 
         User::factory()->create([
             'name' => 'Mateo',
-            'email' => 'mateo@correo.com',
+            'email' => 'sistemas@gruposeynekun.co',
             'password' => bcrypt('password'),
         ])->assignRole('admin');
     }

@@ -17,7 +17,8 @@ class IdentitySeeder extends Seeder
             'Sin documento',
             'CEDULA',
             'PASAPORTE',
-            'CEDULA DE EXTRANJERO',
+            'CEDULA DE EXTRANJERIA',
+            'NIT'
         ];
 
         foreach ($identities as $identity) {

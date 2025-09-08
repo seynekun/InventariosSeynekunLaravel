@@ -15,44 +15,49 @@ class ReasonSeeder extends Seeder
     {
         // Razones para ingreso
         $reasons = [
+
+
             [
-                'name' => 'Ajuste por inventario',
-                'type' => 1
+                'name' => 'Compra a proveedor',
+                'type' => 1,
             ],
             [
                 'name' => 'Devolución de cliente',
-                'type' => 1
+                'type' => 1,
             ],
-
             [
                 'name' => 'Producción terminada',
-                'type' => 1
+                'type' => 1,
             ],
             [
-                'name' => 'Error en salida anterior',
-                'type' => 1
+                'name' => 'Ajuste positivo de inventario',
+                'type' => 1,
+            ],
+            [
+                'name' => 'Error en salida previa',
+                'type' => 1,
             ],
 
-            // Razones para salida
-
             [
-                'name' => 'Ajuste por inventario',
-                'type' => 2
+                'name' => 'Venta a cliente',
+                'type' => 2,
+            ],
+            [
+                'name' => 'Consumo interno',
+                'type' => 2,
             ],
             [
                 'name' => 'Merma o deterioro',
-                'type' => 2
-            ],
-
-            [
-                'name' => 'Consumo interno',
-                'type' => 2
+                'type' => 2,
             ],
             [
-                'name' => 'Caducidad',
-                'type' => 2
-            ]
-
+                'name' => 'Caducidad de producto',
+                'type' => 2,
+            ],
+            [
+                'name' => 'Ajuste negativo de inventario',
+                'type' => 2,
+            ],
         ];
         foreach ($reasons as $reason) {
             Reason::create($reason);
