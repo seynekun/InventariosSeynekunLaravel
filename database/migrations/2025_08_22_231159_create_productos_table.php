@@ -28,6 +28,7 @@ return new class extends Migration
 
             $table->decimal('price', 10, 2)
                 ->default(0.00);
+            $table->string('responsable')->default('');
 
             $table->foreignId('category_id')
                 ->constrained()

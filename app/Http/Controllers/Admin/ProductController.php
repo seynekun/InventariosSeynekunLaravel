@@ -41,6 +41,7 @@ class ProductController extends Controller
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
             'price' => 'required|numeric',
+            'responsable' => 'nullable|string',
             'category_id' => 'required|exists:categories,id',
         ]);
         $product = Product::create($data);
@@ -73,6 +74,7 @@ class ProductController extends Controller
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
             'price' => 'required|numeric',
+            'responsable' => 'nullable|string',
             'category_id' => 'required|exists:categories,id',
         ]);
         $product->update($data);

@@ -16,6 +16,7 @@ class Product extends Model
         'sku',
         'barcode',
         'price',
+        'responsable',
         'category_id',
         'stock'
     ];

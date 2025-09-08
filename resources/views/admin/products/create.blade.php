@@ -21,6 +21,8 @@
             </x-wire-textarea>
             <x-wire-input type="number" label="Precio" name="price" placeholder="Precio del producto"
                 value="{{ old('price') }}" />
+            <x-wire-input label="Responsable" name="responsable" placeholder="Responsable del producto"
+                value="{{ old('responsable') }}" />
 
             <x-wire-native-select label="Categorias" name="category_id">
                 @foreach ($categories as $category)
