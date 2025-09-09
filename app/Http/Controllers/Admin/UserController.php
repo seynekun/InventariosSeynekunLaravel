@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -24,7 +25,8 @@ class UserController extends Controller
     public function create()
     {
         Gate::authorize('create-users');
-        return view('admin.users.create');
+        $roles = Role::all();
+        return view('admin.users.create', compact('roles'));
     }
 
     /**
@@ -37,13 +39,19 @@ class UserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
+            'role_id' => 'required|exists:roles,id',
         ]);
         $data['password'] = bcrypt($data['password']);
         $user = User::create($data);
+        
+        // Asignar el rol seleccionado
+        $role = Role::find($request->role_id);
+        $user->assignRole($role);
+        
         session()->flash('swal', [
             'icon' => 'success',
             'title' => 'Usuario creado',
-            'text' => 'El usuario ha sido creado exitosamente',
+            'text' => 'El usuario ha sido creado exitosamente con el rol ' . $role->name,
         ]);
         return redirect()->route('admin.users.edit', $user);
     }
@@ -62,7 +70,8 @@ class UserController extends Controller
     public function edit(User $user)
     {
         Gate::authorize('update-users');
-        return view('admin.users.edit', compact('user'));
+        $roles = Role::all();
+        return view('admin.users.edit', compact('user', 'roles'));
     }
 
     /**
@@ -75,6 +84,7 @@ class UserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
             'password' => 'nullable|string|min:8|confirmed',
+            'role_id' => 'required|exists:roles,id',
         ]);
 
         if (!empty($data['password'])) {
@@ -84,11 +94,15 @@ class UserController extends Controller
         }
 
         $user->update($data);
+        
+        // Actualizar el rol del usuario
+        $role = Role::find($request->role_id);
+        $user->syncRoles([$role]);
 
         session()->flash('swal', [
             'icon' => 'success',
             'title' => 'Usuario actualizado',
-            'text' => 'El usuario ha sido actualizado exitosamente',
+            'text' => 'El usuario ha sido actualizado exitosamente con el rol ' . $role->name,
         ]);
         return redirect()->route('admin.users.edit', $user);
     }
